@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
 
 interface Props {
-  routeType: string;
+  routeType: "search" | "community";
 }
 
 function Searchbar({ routeType }: Props) {
@@ -39,7 +39,7 @@ function Searchbar({ routeType }: Props) {
         className="no-focus searchbar_input"
         id="text"
         placeholder={
-          routeType !== "/search" ? "Search communities" : "Search creators"
+          routeType !== "search" ? "Search communities" : "Search creators"
         }
         onChange={(e) => setSearch(e.target.value)}
         value={search}
