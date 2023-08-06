@@ -17,7 +17,7 @@ const Activity = async () => {
   const activities = await getActivity(userInfo._id);
 
   return (
-    <section>
+    <>
       <h1 className="head-text mb-10">Activity</h1>
       <section className="mt-10 flex flex-col gap-5">
         {activities.length > 0 ? (
@@ -46,7 +46,7 @@ const Activity = async () => {
           <p className="!text-base-regular text-light-3">No activity yet.</p>
         )}
       </section>
-    </section>
+    </>
   );
 };
 
