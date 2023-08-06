@@ -24,6 +24,7 @@ const Bottombar = () => {
               key={link.label}
             >
               <Image
+                className="object-contain"
                 src={link.imgURL}
                 alt={link.label}
                 width={24}

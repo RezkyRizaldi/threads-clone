@@ -16,16 +16,19 @@ interface Props {
 const UserCard = ({ id, name, username, imgUrl, personType }: Props) => {
   const router = useRouter();
 
+  const isCommunity = personType === "Community";
+
   return (
     <article className="user-card">
       <div className="user-card_avatar">
-        <Image
-          className="rounded-full"
-          src={imgUrl}
-          alt="Logo"
-          width={48}
-          height={48}
-        />
+        <div className="relative h-12 w-12">
+          <Image
+            className="rounded-full object-cover"
+            src={imgUrl}
+            alt="Logo"
+            fill
+          />
+        </div>
         <div className="flex-1 text-ellipsis">
           <h4 className="text-base-semibold text-light-1">{name}</h4>
           <p className="text-small-medium text-gray-1">@{username}</p>
@@ -33,7 +36,11 @@ const UserCard = ({ id, name, username, imgUrl, personType }: Props) => {
       </div>
       <Button
         className="user-card_btn"
-        onClick={() => router.push(`/profile/${id}`)}
+        onClick={() =>
+          isCommunity
+            ? router.push(`/communities/${id}`)
+            : router.push(`/profile/${id}`)
+        }
       >
         View
       </Button>

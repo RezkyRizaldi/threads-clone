@@ -19,12 +19,16 @@ import { Textarea } from "@/components/ui/textarea";
 import { createThread } from "@/lib/actions/thread.actions";
 import { ThreadValidation } from "@/lib/validations/thread";
 
-const PostThread = ({ userId }: { userId: string }) => {
+interface Props {
+  userId: string;
+}
+
+const PostThread = ({ userId }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
   const { organization } = useOrganization();
 
-  const form = useForm({
+  const form = useForm<z.infer<typeof ThreadValidation>>({
     resolver: zodResolver(ThreadValidation),
     defaultValues: {
       thread: "",
